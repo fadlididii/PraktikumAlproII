@@ -1,69 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informasi Mahasiswa</title>
+    <title>Profil Diri</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            background-color: #222;
+            color: #fff;
             text-align: center;
             margin: 0;
             padding: 0;
         }
-        
-        h1 {
-            color: #333;
-        }
-        
-        #mahasiswa-info {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            margin: 0 auto;
-        }
-        
-        img {
-            border-radius: 50%;
+        .profile {
             max-width: 200px;
-            margin-bottom: 10px;
-            
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #444;
+            background-color: #333;
         }
-        
-        label {
-            font-weight: bold;
+        h1 {
+            font-size: 28px;
         }
-        
         p {
-            margin: 0;
+            font-size: 18px;
         }
-
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #555;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #777;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            border: 2px solid #555;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
-    <h1>Informasi Mahasiswa</h1>
-    <div id="mahasiswa-info">
-        <!-- Foto -->
-        <img src="i.jpg" alt="Foto Mahasiswa">
-        
-        <!-- Nama -->
-        <label for="nama"><center></center>Nama:</label>
-        <p id="nama">Fadli Muhammad</p>
-        
-        <!-- NIM -->
-        <label for="nim">NIM:</label>
-        <p id="nim">164221081</p>
-        
-        <!-- Prodi -->
-        <label for="prodi">Prodi:</label>
-        <p id="prodi">Teknologi Sains Data</p>
-
-        <!-- Kelas -->
-        <label for="kelas">Kelas:</label>
-        <p id="kelas">Algoritma Pemrograman II</p>
+    <div class="profile">
+        <img src="i.jpg" alt="Foto Profil">
+        <h1>Fadli Muhammad</h1>
+        <p>NIM: 164221081</p>
+        <p>Hobi: Olahraga dan Main Game</p>
+        <a href="https://github.com/fadlididii/PraktikumWeek4" class="btn">GitHub</a>
     </div>
 </body>
 </html>
