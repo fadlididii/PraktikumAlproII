@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum Week 6</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            background-color: #333;
+            padding: 0;
+            text-align: center;
+            border-bottom: 3px solid #ff5733;
+        }
+
+        ul li a {
+            color: #00aaff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 17px;
+            transition: color 0.3s;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        label {
+            color: #ffffff;
+        }
+
+        input[type="text"] {
+            background-color: #444444;
+            color: #ffffff;
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #00aaff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0077cc;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        #table-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tugas Praktikum M6 Algoritma Pemrograman II</h2>
+    <p>Nama : Fadli Muhammad</p>
+    <p>NIM : 164221081</p>
+    <ul>
+        <li><a href="index.html">Home Page</a></li>
+    </ul>
+    <div id="container">
+        <input type="text" id="url" placeholder="Masukkan URL">
+        <button id="fetchButton" onclick="fetchData()">Submit</button>
+        <div id="table-container">
+            <p>Data dari URL:</p>
+            <table id="data-table"></table>
+        </div>
+    </div>
+
+    <script>
+        function fetchData() {
+            const urlInput = document.getElementById('url').value;
+            const tableContainer = document.getElementById('table-container');
+            const dataTable = document.getElementById('data-table');
+
+            // Buat objek AJAX
+            const xhr = new XMLHttpRequest();
+
+            // Atur fungsi penanganan ketika permintaan AJAX selesai
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Konversi JSON yang diterima ke objek JavaScript
+                    const data = JSON.parse(xhr.responseText);
+
+                    // Hapus semua baris tabel sebelum menambahkan yang baru
+                    dataTable.innerHTML = '';
+
+                    // Buat header tabel
+                    const headerRow = document.createElement('tr');
+                    for (const key in data[0]) {
+                        if (data[0].hasOwnProperty(key)) {
+                            const headerCell = document.createElement('th');
+                            headerCell.textContent = key;
+                            headerRow.appendChild(headerCell);
+                        }
+                    }
+                    dataTable.appendChild(headerRow);
+
+                    // Tambahkan data ke tabel
+                    data.forEach(function (item) {
+                        const dataRow = document.createElement('tr');
+                        for (const key in item) {
+                            if (item.hasOwnProperty(key)) {
+                                const dataCell = document.createElement('td');
+                                dataCell.textContent = item[key];
+                                dataRow.appendChild(dataCell);
+                            }
+                        }
+                        dataTable.appendChild(dataRow);
+                    });
+
+                    // Tampilkan tabel
+                    tableContainer.style.display = 'block';
+                }
+            };
+
+            // Kirim permintaan GET ke URL yang diinputkan
+            xhr.open('GET', urlInput, true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
